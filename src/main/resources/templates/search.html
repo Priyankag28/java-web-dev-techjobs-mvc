@@ -20,8 +20,8 @@
                         name="searchType"
                         th:id="${column.key}"
                         th:value="${column.key}"
-                        th:checked="${column.key == 'all'}"/>
-                <label th:for="${column.key}" th:text="${column.value}"></label>
+                        th:checked="${selectedColumn} ? ${column.key == selectedColumn} : ${column.key == 'all'}"/>
+                <label th:for="${column.key}" th:text="${column.value}">`1</label>
             </span>
 
         </p>
@@ -37,6 +37,18 @@
     <hr />
 
     <!-- TODO #4 - Loop over the search results to display all job fields. -->
+    <table class="centeredTable">
+        <tr th:each="job: ${jobs}">
+            <th class="text-left">
+                ID : <span th:text = "${job.id}"></span><br>
+                Name : <span th:text = "${job.name}"></span><br>
+                Employer : <span th:text = "${job.employer}"></span><br>
+                Location : <span th:text = "${job.location}"></span><br>
+                Position Type : <span th:text = "${job.positionType}"></span><br>
+                Core Competency : <span th:text = "${job.coreCompetency}"></span>
+            </th>
+        </tr>
+    </table>
 
 </div>
 
